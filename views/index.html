@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Form</title>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/contactFavicon.png" type="image/png">
     <link rel="stylesheet" href="/styles/styles.css">
 </head>
 <body>
 <main>
 
-<form id="contact-form" action="#" method="get">
+<form id="contact-form" class="contact-form" action="#" method="get">
+    <h1>Contact Form</h1>
     <div class="contact-row1">
     <div class="field">
       <label for="fname">First Name</label>
@@ -63,9 +64,29 @@
   </div>
 </div>
 
-    <label for="fname"></label>
-    <label for="fname"></label>
-    <label for="fname"></label>
+    <div class="field message-field">
+  <label for="comment">Message</label>
+  <textarea name="comment" id="comment" rows="5"></textarea>
+</div>
+
+    <div class="checkbox">
+  <label>
+    <input type="checkbox" id="mailingList" name="mailingList">
+    Please add me to your mailing list
+  </label>
+</div>
+<div class="radio-group">
+  <span>Choose an email format:</span>
+  <label>
+    <input type="radio" name="emailFormat" value="html" checked>
+    HTML
+  </label>
+  <label>
+    <input type="radio" name="emailFormat" value="text">
+    Text
+  </label>
+</div>
+<button type="submit">Submit</button>
 </form>
 </main>
 <script src="/js/contact.js"></script>
