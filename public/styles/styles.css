@@ -95,3 +95,7 @@ input,
 select {
   height: 35px;
 }
+.err {
+  display: none;
+  color: red;
+}
