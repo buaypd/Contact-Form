@@ -49,8 +49,8 @@ document.getElementById("contact-form").onsubmit = (event) => {
     }
 
     if (isValid) {
-        alert("Form submitted!");
-        
+        event.preventDefault();
+    
     }
 
     return isValid;

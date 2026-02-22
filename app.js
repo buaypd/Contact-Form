@@ -7,7 +7,9 @@ const app = express();
 app.use(express.static('public'));
 
 // Define the port number where our server will listen 
-const PORT = 3000;
+const PORT = 3004;
+
+const contacts = [];
 
 // Define a default "route" ('/')
 // req: contains information about the incoming request
@@ -15,6 +17,36 @@ const PORT = 3000;
 app.get('/', (req, res) => {
     
     res.sendFile(`${import.meta.dirname}/views/index.html`);
+});
+
+app.get('/confirmation', (req, res) => {
+    res.sendFile(`${import.meta.dirname}/views/confirmation.html`);
+});
+
+app.get('/admin', (req, res) => {
+    res.send(contacts);
+});
+
+app.post('/submit', (req, res) => {
+    const contact = {
+        fname: req.body.fname,
+        lname: req.body.lname,
+        jobTitle: req.body.jobTitle,
+        company: req.body.company,
+        linkedin: req.body.linkedin,
+        email: req.body.email,
+        meet: req.body.meet,
+        other: req.body.other,
+        comment: req.body.comment,
+        mailingList: req.body.mailingList ? true : false,
+        emailFormat: req.body.emailFormat,
+        timestamp: new Date()
+    };
+
+    
+    contacts.push(contact);
+
+    res.sendFile(`${import.meta.dirname}/views/confirmation.html`);
 });
 
 // Start the server and listen on the specified port
