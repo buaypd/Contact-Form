@@ -5,7 +5,7 @@ import express from 'express';
 const app = express();
 
 app.use(express.static('public'));
-
+app.use(express.urlencoded({extended: true}));
 // Define the port number where our server will listen 
 const PORT = 3004;
 

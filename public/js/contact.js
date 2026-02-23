@@ -1,6 +1,6 @@
-alert("Hello World");
+//alert("Hello World");
 document.getElementById("contact-form").onsubmit = (event) => {
-    event.preventDefault();
+    //event.preventDefault();
     clearErrors();
 
     let isValid = true;
@@ -48,7 +48,7 @@ document.getElementById("contact-form").onsubmit = (event) => {
         isValid = false;
     }
 
-    if (isValid) {
+    if (!isValid) {
         event.preventDefault();
     
     }
