@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You!</title>
+    <link rel="icon" href="images/contactFavicon.png" type="image/png">
+    <link rel="stylesheet" href="/styles/styles.css">
+</head>
+<body>
+  <%- include('partials/navbar') %>
+  <h1>Thank you, <%= contact.fname %>!</h1>
+<h2>Submission Details</h2>
+  <p>Name: <%= contact.fname %> <%= contact.lname %></p>
+  <p>Email: <%= contact.email %></p>
+<% if (contact.jobTitle) { %>
+  <p>Job Title: <%= contact.jobTitle %></p>
+<% } %>
+<% if (contact.company) { %>
+  <p>Company: <%= contact.company %></p>
+<% } %>
+<% if (contact.linkedin) { %>
+  <p>LinkedIn: <%= contact.linkedin %></p>
+<% } %>
+  <p>How we met: <%= contact.meet === "other" ? contact.other : contact.meet %> </p>
+  <p>Mailing List: <%= contact.mailingList ? "Yes" : "No" %> </p>
+<% if (contact.mailingList) { %>
+  <p>Email Format: <%= contact.emailFormat %></p>
+<% } %>
+<% if (contact.comment) { %>
+  <p>Comment: <%= contact.comment %></p>
+<% } %>
+  <p>Date/Time: <%= contact.timestamp.toLocaleString() %></p>
+<a href="/contact">Submit another form</a>
+</body>
+</html>

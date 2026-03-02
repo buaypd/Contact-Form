@@ -6,6 +6,7 @@ const app = express();
 
 app.use(express.static('public'));
 app.use(express.urlencoded({extended: true}));
+app.set('view engine', 'ejs');
 // Define the port number where our server will listen 
 const PORT = 3004;
 
@@ -15,16 +16,15 @@ const contacts = [];
 // req: contains information about the incoming request
 // res: allows us to send back a response to the client
 app.get('/', (req, res) => {
-    
-    res.sendFile(`${import.meta.dirname}/views/index.html`);
+    res.render("contact");
 });
 
 app.get('/confirmation', (req, res) => {
-    res.sendFile(`${import.meta.dirname}/views/confirmation.html`);
+    res.render("confirmation");
 });
 
 app.get('/admin', (req, res) => {
-    res.send(contacts);
+    res.render("admin", { contacts });
 });
 
 app.post('/submit', (req, res) => {
@@ -43,12 +43,10 @@ app.post('/submit', (req, res) => {
         timestamp: new Date()
     };
 
-    
     contacts.push(contact);
 
-    res.sendFile(`${import.meta.dirname}/views/confirmation.html`);
+    res.render("confirmation", {contact});
 });
-
 // Start the server and listen on the specified port
 app.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${PORT}`);

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="/styles/styles.css">
+</head>
+<body>
+    <%- include('partials/navbar') %>
+    <main>
+        <h1>Admin — All Contacts</h1>
+
+        <% if (contacts.length === 0) { %>
+            <p>No contacts to display yet.</p>
+        <% } else { %>
+        <table id="contacts-table">
+            <thead>
+                <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Job Title</th>
+                <th>Company</th>
+                <th>How We Met</th>
+                <th>Mailing List</th>
+                <th>Email Format</th>
+                <th>Comment</th>
+                <th>Timestamp</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% contacts.forEach(contact => { %>
+                <tr>
+                    <td><%= contact.fname %> <%= contact.lname %></td>
+                    <td><%= contact.email %></td>
+                    <td><%= contact.jobTitle || '—' %></td>
+                    <td><%= contact.company || '—' %></td>
+                    <td><%= contact.meet === "other" ? contact.other : contact.meet %></td>
+                    <td><%= contact.mailingList ? "Yes" : "No" %></td>
+                    <td><%= contact.mailingList ? contact.emailFormat : '—' %></td>
+                    <td><%= contact.comment || '—' %></td>
+                    <td><%= contact.timestamp.toLocaleString() %></td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+     <% } %>
+</main>
+</body>
+</html>
