@@ -8,7 +8,7 @@ app.use(express.static('public'));
 app.use(express.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 // Define the port number where our server will listen 
-const PORT = 3004;
+const PORT = 3020;
 
 const contacts = [];
 
