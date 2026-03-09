@@ -39,7 +39,7 @@
                     <td><%= contact.mailingList ? "Yes" : "No" %></td>
                     <td><%= contact.mailingList ? contact.emailFormat : '—' %></td>
                     <td><%= contact.comment || '—' %></td>
-                    <td><%= contact.timestamp.toLocaleString() %></td>
+                    <td><%= new Date(contact.submitted_at).toLocaleString() %></td>
                 </tr>
                 <% }) %>
             </tbody>
