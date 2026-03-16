@@ -13,6 +13,16 @@
 
 <form id="contact-form" class="contact-form" action="/submit" method="post">
     <h1>Contact Form</h1>
+    
+    <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+  <div class="error-summary">
+    <ul>
+      <% errors.forEach(function(err) { %>
+        <li><%= err %></li>
+      <% }); %>
+    </ul>
+  </div>
+<% } %>
     <div class="contact-row1">
     <div class="field">
       <label for="fname">First Name</label>

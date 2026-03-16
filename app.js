@@ -2,6 +2,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import mysql from 'mysql2';
+import { validateForm } from './validation.js';
 
 dotenv.config();
 
@@ -35,6 +36,13 @@ app.get('/', (req, res) => {
 
 app.get('/confirmation', (req, res) => {
     res.render("confirmation");
+});
+app.get('/portfolio', (req, res) => {
+  res.render('portfolio');
+});
+
+app.get('/resume', (req, res) => {
+    res.render('resume');
 });
 
 app.get('/admin', async (req, res) => {
@@ -70,6 +78,14 @@ app.post('/submit', async (req, res) => {
         mailingList: req.body.mailingList ? true : false,
         emailFormat: req.body.emailFormat
     };
+    
+     const valid = validateForm(contact);
+    if (!valid.isValid) {
+        return res.render('contact', {
+            errors: valid.errors,
+            formData: contact
+        });
+    }
 
     const params = [
         contact.fname,
